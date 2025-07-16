@@ -14,7 +14,12 @@ class InputData(BaseModel):
     last_product_category: float
 
 #loading the trained model
-model = joblib.load(r"C:\Users\yashw\PycharmProjects\web_app_churn_prediction\backend\tuned_churn_model_pipeline2.pkl")
+
+import os
+
+current_dir = os.path.dirname(__file__)
+model_path = os.path.join(current_dir, "tuned_churn_model_pipeline2.pkl")
+model = joblib.load(model_path)
 
 @app.get("/")
 def read_root():
